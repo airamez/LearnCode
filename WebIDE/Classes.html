@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script>
+
+
+</script>
+
+<script>
+$(document).ready(function () {
+
+    $("#class_list").change(function() {
+        var selectedClass = $("#class_list").val();
+        $('#class_content').load(selectedClass);
+    });
+});
+  
+</script>
+
+</head>
+<body>
+Class
+ <select id="class_list" name="class_list">
+  <option value="">Select class...</option>
+  <option value="Class01.html">Class 01</option>
+  <option value="Class02.html">Class 02</option>
+  <option value="Class03.html">Class 03</option>
+  <option value="Class04.html">Class 04</option>
+  <option value="Class05.html">Class 05</option>
+</select>
+<div id="class_content" name="class_content">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" src="layout-default-latest.css">
+<script type="text/javascript" src="jquery.layout-latest.js"></script>
+
+<script src="WebIDE.js"></script>
+
+<link rel="stylesheet" href="CodeMirror/doc/docs.css">
+<link rel="stylesheet" href="CodeMirror/addon/show-hint.css">
+<link rel="stylesheet" href="CodeMirror/lib/codemirror.css">
+<link rel="stylesheet" href="CodeMirror/theme/abcdef.css">
+<link rel="stylesheet" href="CodeMirror/theme/ambiance.css">
+<link rel="stylesheet" href="CodeMirror/theme/blackboard.css">
+<link rel="stylesheet" href="CodeMirror/theme/cobalt.css">
+<link rel="stylesheet" href="CodeMirror/theme/eclipse.css">
+<link rel="stylesheet" href="CodeMirror/theme/neat.css">
+<link rel="stylesheet" href="CodeMirror/theme/night.css">
+<link rel="stylesheet" href="CodeMirror/theme/railscasts.css">
+<link rel="stylesheet" href="CodeMirror/theme/rubyblue.css">
+<link rel="stylesheet" href="CodeMirror/theme/seti.css">
+<link rel="stylesheet" href="CodeMirror/theme/the-matrix.css">
+<link rel="stylesheet" href="CodeMirror/theme/tomorrow-night-bright.css">
+<link rel="stylesheet" href="CodeMirror/theme/ttcn.css">
+<link rel="stylesheet" href="CodeMirror/theme/twilight.css">
+<link rel="stylesheet" href="CodeMirror/theme/vibrant-ink.css">
+<link rel="stylesheet" href="CodeMirror/theme/xq-dark.css">
+<link rel="stylesheet" href="CodeMirror/theme/xq-light.css">
+<link rel="stylesheet" href="CodeMirror/theme/yeti.css">
+<link rel="stylesheet" href="CodeMirror/theme/zenburn.css">
+<script src="CodeMirror/lib/codemirror.js"></script>
+<script src="CodeMirror/mode/javascript.js"></script>
+<script src="CodeMirror/addon/active-line.js"></script>
+<script src="CodeMirror/addon/matchbrackets.js"></script>
+<script src="CodeMirror/addon/show-hint.js"></script>
+<script src="CodeMirror/addon/javascript-hint.js"></script>
+
+<script type="text/javascript">
+
+function selectTheme() {
+    var theme_select = document.getElementById("theme_select");
+    var theme = theme_select.options[theme_select.selectedIndex].textContent;
+    editor.setOption("theme", theme);
+    location.hash = "#" + theme;
+}
+
+var editor;
+
+$(document).ready(function () {
+
+	var myLayout = $('body').layout({ 
+        applyDefaultStyles: true,
+        east__minSize: 500,
+        west__minSize: 400,
+        
+    });
+
+    editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      lineNumbers: true,
+      styleActiveLine: true,
+      matchBrackets: true,
+      extraKeys: {"Ctrl-Space": "autocomplete"},
+      mode: {name: "javascript", globalVars: true}
+    });
+    editor.setSize("98%", "94%");
+    
+    var theme_select = document.getElementById("theme_select");
+    var choice = (location.hash && location.hash.slice(1)) ||
+                 (document.location.search &&
+                  decodeURIComponent(document.location.search.slice(1)));
+    if (choice) {
+      theme_select.value = choice;
+      editor.setOption("theme", choice);
+    }
+    
+    CodeMirror.on(window, "hashchange", function() {
+      var theme = location.hash.slice(1);
+      if (theme) { theme_select.value = theme; selectTheme(); }
+    });
+    
+});
+  
+</script>
+
+</head>
+
+<body>
+<div class="ui-layout-north">
+</div>
+<div class="ui-layout-west">
+<iframe src="Classes.html" width="98%" height="98%"></iframe>
+</div>
+<div class="ui-layout-east">
+    <table>
+        <tr>
+            <td align="center">Input - <button type="button" onclick="return $('#input').empty();">Clear</button> </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea rows="20" cols="60" id="input">
+Jose Santos
+44
+10 34 58
+Jose Leila Artur
+                </textarea>
+            </td>
+        <tr/>
+        <tr>
+            <td align="center">Output - <button type="button" onclick="return $('#output').empty();">Clear</button></td>
+        <tr/>
+        <tr>
+            <td><textarea rows="20" cols="60" id="output"></textarea></td>
+        </tr>
+    </table>
+</div>
+
+<div class="ui-layout-center" height="100%">
+    <p>Theme: 
+        <select onchange="selectTheme()" id="theme_select">
+            <option selected>default</option>
+            <option>abcdef</option>
+            <option>ambiance</option>
+            <option>blackboard</option>
+            <option>cobalt</option>
+            <option>eclipse</option>
+            <option>neat</option>
+            <option>night</option>
+            <option>railscasts</option>
+            <option>rubyblue</option>
+            <option>seti</option>
+            <option>the-matrix</option>
+            <option>tomorrow-night-bright</option>
+            <option>ttcn</option>
+            <option>twilight</option>
+            <option>vibrant-ink</option>
+            <option>xq-dark</option>
+            <option>xq-light</option>
+            <option>yeti</option>
+            <option>zenburn</option>
+        </select>
+        <button type="button" onclick="return Code.Run();">Run</button>
+        <button type="button" onclick="return Code.Clear();">Clear</button>
+    </p>
+
+    <textarea rows="40" cols="40" id="code" name="code" width="100%">
+var name = Input.ReadLine();
+var age = Input.ReadLine();
+var n1 = Input.Read();
+var n2 = Input.Read();
+var n3 = Input.ReadLine();
+var names = Input.ReadArray();
+Output.WriteLine(name);
+Output.WriteLine(age);
+Output.Write(n1);
+Output.Write(n2)
+Output.WriteLine(n3);
+Output.WriteLine(n1, n2, n3);
+Output.WriteLine(names[0]);
+Output.WriteLine(names[1]);
+Output.WriteLine(names[2]);
+Output.WriteLine(names);
+    </textarea>
+</div>
+
+</body>
+
+
+</html>
