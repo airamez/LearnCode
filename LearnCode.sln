@@ -3,28 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D015E773-EEB4-48A8-AADA-F02ED8CC0246}"
-	ProjectSection(SolutionItems) = preProject
-		index.html = index.html
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebIDE", "WebIDE", "{76D93038-8057-4DB6-949A-61824A739751}"
-	ProjectSection(SolutionItems) = preProject
-		WebIDE\Class01.html = WebIDE\Class01.html
-		WebIDE\Class02.html = WebIDE\Class02.html
-		WebIDE\Class03.html = WebIDE\Class03.html
-		WebIDE\Class04.html = WebIDE\Class04.html
-		WebIDE\Class05.html = WebIDE\Class05.html
-		WebIDE\Classes.html = WebIDE\Classes.html
-		WebIDE\WebIDE.html = WebIDE\WebIDE.html
-		WebIDE\WebIDE.js = WebIDE\WebIDE.js
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{5E970B3B-2D1A-43BB-9A2B-2DA31BD75AF5}"
 EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E970B3B-2D1A-43BB-9A2B-2DA31BD75AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E970B3B-2D1A-43BB-9A2B-2DA31BD75AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E970B3B-2D1A-43BB-9A2B-2DA31BD75AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E970B3B-2D1A-43BB-9A2B-2DA31BD75AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{76D93038-8057-4DB6-949A-61824A739751} = {D015E773-EEB4-48A8-AADA-F02ED8CC0246}
 	EndGlobalSection
 EndGlobal
