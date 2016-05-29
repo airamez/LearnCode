@@ -1,82 +1,73 @@
-class Input {
-    
-    constructor () {
-        
-    }
-
-    static PrepareInput () {
+var Input = { 
+    PrepareInput: function () {
         if (Input._inputContent == null) {
             Input._inputContent = $('#input').text();
             Input._currentIdex = 0;
         }
-    }
+    },
 
-    static Read () {
+    Read: function() {
         Input.PrepareInput();
         var space = Input._inputContent.indexOf(" ", Input._currentIdex);
         var inputValue = Input._inputContent.substring(Input._currentIdex, space);
         Input._currentIdex = space + 1;
         return inputValue;
         
-    }
+    },
 
-    static ReadLine () {
+    ReadLine: function () {
         Input.PrepareInput();
         var lineBreak = Input._inputContent.indexOf('\n', Input._currentIdex);
         var line = Input._inputContent.substring(Input._currentIdex, lineBreak);
         Input._currentIdex = lineBreak + 1;
         return line;
-    }
+    },
     
-    static ReadArray () {
+    ReadArray: function () {
         var line = Input.ReadLine();
         var inputArray = line.split(" ");
         return inputArray;
-    }
+    },
 }
 
 Input._inputContent;
 Input._currentIdex;
 
-class Output {
-    constructor() {
+var Output = { 
     
-    }
-    
-    static WriteLine () {
+    WriteLine: function() {
         Output.PreapreOutput();
         for (var i = 0; i < arguments.length; i++) {
             Output.Write(arguments[i] + ' ');
         }
         Output.Write("\n");
         
-    }
+    },
     
-    static Write (content) {
+    Write: function (content) {
         Output.PreapreOutput();
         Output._output.append(content);
-    }
+    },
     
-    static PreapreOutput () {
+    PreapreOutput: function() {
         if (Output._output == null) {
             Output._output = $('#output');
         }
     }
-
 }
 
 Output._output;
 
-class Code {
+var Code =  {
     
-    static Run() {
+    Run: function() {
         var code = editor.getValue();
         $('#output').empty();
         Input._currentIdex = 0;
         eval(code);
-    }
+    },
     
-    static Clear() {
+    Clear: function () {
         editor.setValue('');
         $('#code').empty();
     }

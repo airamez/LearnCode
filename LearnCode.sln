@@ -3,8 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D015E773-EEB4-48A8-AADA-F02ED8CC0246}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebIDE", "WebIDE", "{76D93038-8057-4DB6-949A-61824A739751}"
+	ProjectSection(SolutionItems) = preProject
+		WebIDE\Class01.html = WebIDE\Class01.html
+		WebIDE\Class02.html = WebIDE\Class02.html
+		WebIDE\Class03.html = WebIDE\Class03.html
+		WebIDE\Class04.html = WebIDE\Class04.html
+		WebIDE\Class05.html = WebIDE\Class05.html
+		WebIDE\Classes.html = WebIDE\Classes.html
+		WebIDE\WebIDE.html = WebIDE\WebIDE.html
+		WebIDE\WebIDE.js = WebIDE\WebIDE.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76D93038-8057-4DB6-949A-61824A739751} = {D015E773-EEB4-48A8-AADA-F02ED8CC0246}
 	EndGlobalSection
 EndGlobal
