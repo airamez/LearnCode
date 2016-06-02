@@ -1,7 +1,7 @@
 var Input = { 
     PrepareInput: function () {
         if (Input._inputContent == null) {
-            Input._inputContent = $('#input').text();
+            Input._inputContent = $('#input').val();
             Input._currentIdex = 0;
         }
     },
@@ -62,6 +62,10 @@ var Code =  {
     
     Run: function() {
         var code = editor.getValue();
+
+        Input._inputContent = $('#input').val();
+        Input._currentIdex = 0;
+
         $('#output').empty();
         Input._currentIdex = 0;
         eval(code);
