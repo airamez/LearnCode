@@ -49,26 +49,21 @@ Input._currentIndex;
 
 var Output = { 
     
-    WriteLine: function() {
-        Output.Write(arguments);
+    WriteLine: function(content) {
+        Output.Write(content);
         Output._output.append("\n");
     },
     
-    Write: function () {
-        for (var i = 0; i < arguments.length; i++) {
-            if (arguments[i].length == 1) {
-                Output._output.append(arguments[i]);
-            } else {
-                for (var j = 0; j < arguments[i].length; j++) {
-                    Output._output.append(arguments[i][j]);
-                    if (j != arguments[i].length - 1) {
-                        Output._output.append(' ');
-                    }
+    Write: function (content) {
+        if (content instanceof Array) {
+            for (var i = 0; i < content.length; i++) {
+                Output._output.append(content[i]);
+                if (i != content.length - 1) {
+                    Output._output.append(",");
                 }
             }
-            if (arguments[i + 1] != null) {
-                Output._output.append(' ');
-            }
+        } else {
+            Output._output.append(content);
         }
     },
     

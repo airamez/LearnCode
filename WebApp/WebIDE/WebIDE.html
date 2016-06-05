@@ -14,7 +14,7 @@
     <script type="text/javascript" src="Content/jquery.layout-latest.js"></script>
     <script src="Content/WebIDE.js"></script>
 
-<link rel="stylesheet" href="Content/CodeMirror/doc/docs.css">
+    <link rel="stylesheet" href="Content/CodeMirror/doc/docs.css">
     <link rel="stylesheet" href="Content/CodeMirror/addon/show-hint.css">
     <link rel="stylesheet" href="Content/CodeMirror/lib/codemirror.css">
     <link rel="stylesheet" href="Content/CodeMirror/theme/abcdef.css">
@@ -105,7 +105,8 @@ $(document).ready(function () {
             </tr>
             <tr>
                 <td>
-                    <textarea rows="20" cols="60" id="input">s
+                    <textarea rows="20" cols="60" id="input">
+s
 a b c
 1 2 3 4 5 6</textarea>
                 </td>
@@ -155,7 +156,20 @@ var b = Input.Read();
 var c = Input.ReadLine();
 var arr1 = Input.ReadArray();
 
-Output.Write(s, arr1, a, b, c, arr1);</textarea>
+Output.Write(5);
+Output.WriteLine();
+
+Output.Write([1,2,3]);
+Output.WriteLine([1,2,3]);
+
+
+Output.WriteLine(s);
+Output.WriteLine(a + ' ' + b + ' ' + c);
+Output.Write(a + ' ');
+Output.Write(b + ' ');
+Output.WriteLine(c);
+Output.Write(arr1);
+Output.WriteLine();</textarea>
     </div>
 </body>
 
