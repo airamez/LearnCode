@@ -2,44 +2,46 @@
 <head>
     <title>WebIDE</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
 
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="Content/jquery-2.2.4.min.js"></script>
+    <script src="Content/jquery-ui/jquery-ui.js"></script>
+    <link href="Content/jquery-ui/jquery-ui.css" rel="stylesheet" />
 
-<link rel="stylesheet" src="layout-default-latest.css">
-<script type="text/javascript" src="jquery.layout-latest.js"></script>
+    <link rel="stylesheet" src="Content/layout-default-latest.css">
+    <script type="text/javascript" src="Content/jquery.layout-latest.js"></script>
+    <script src="Content/WebIDE.js"></script>
 
-<script src="WebIDE.js"></script>
-
-<link rel="stylesheet" href="CodeMirror/doc/docs.css">
-<link rel="stylesheet" href="CodeMirror/addon/show-hint.css">
-<link rel="stylesheet" href="CodeMirror/lib/codemirror.css">
-<link rel="stylesheet" href="CodeMirror/theme/abcdef.css">
-<link rel="stylesheet" href="CodeMirror/theme/ambiance.css">
-<link rel="stylesheet" href="CodeMirror/theme/blackboard.css">
-<link rel="stylesheet" href="CodeMirror/theme/cobalt.css">
-<link rel="stylesheet" href="CodeMirror/theme/eclipse.css">
-<link rel="stylesheet" href="CodeMirror/theme/neat.css">
-<link rel="stylesheet" href="CodeMirror/theme/night.css">
-<link rel="stylesheet" href="CodeMirror/theme/railscasts.css">
-<link rel="stylesheet" href="CodeMirror/theme/rubyblue.css">
-<link rel="stylesheet" href="CodeMirror/theme/seti.css">
-<link rel="stylesheet" href="CodeMirror/theme/the-matrix.css">
-<link rel="stylesheet" href="CodeMirror/theme/tomorrow-night-bright.css">
-<link rel="stylesheet" href="CodeMirror/theme/ttcn.css">
-<link rel="stylesheet" href="CodeMirror/theme/twilight.css">
-<link rel="stylesheet" href="CodeMirror/theme/vibrant-ink.css">
-<link rel="stylesheet" href="CodeMirror/theme/xq-dark.css">
-<link rel="stylesheet" href="CodeMirror/theme/xq-light.css">
-<link rel="stylesheet" href="CodeMirror/theme/yeti.css">
-<link rel="stylesheet" href="CodeMirror/theme/zenburn.css">
-<script src="CodeMirror/lib/codemirror.js"></script>
-<script src="CodeMirror/mode/javascript.js"></script>
-<script src="CodeMirror/addon/active-line.js"></script>
-<script src="CodeMirror/addon/matchbrackets.js"></script>
-<script src="CodeMirror/addon/show-hint.js"></script>
-<script src="CodeMirror/addon/javascript-hint.js"></script>
+<link rel="stylesheet" href="Content/CodeMirror/doc/docs.css">
+    <link rel="stylesheet" href="Content/CodeMirror/addon/show-hint.css">
+    <link rel="stylesheet" href="Content/CodeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/abcdef.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/eclipse.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/neat.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/railscasts.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/seti.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/tomorrow-night-bright.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/ttcn.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/twilight.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/vibrant-ink.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/xq-dark.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/xq-light.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/yeti.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/zenburn.css">
+    <script src="Content/CodeMirror/lib/codemirror.js"></script>
+    <script src="Content/CodeMirror/mode/javascript.js"></script>
+    <script src="Content/CodeMirror/addon/active-line.js"></script>
+    <script src="Content/CodeMirror/addon/matchbrackets.js"></script>
+    <script src="Content/CodeMirror/addon/show-hint.js"></script>
+    <script src="Content/CodeMirror/addon/javascript-hint.js"></script>
 
 <script type="text/javascript">
 
@@ -57,8 +59,7 @@ $(document).ready(function () {
 	var myLayout = $('body').layout({ 
         applyDefaultStyles: true,
         east__minSize: 500,
-        west__minSize: 400,
-        
+        west__minSize: 400
     });
 
     editor = CodeMirror.fromTextArea(document.getElementById("code"), {
@@ -95,7 +96,7 @@ $(document).ready(function () {
         <iframe src="/Login.aspx" width="98%" height="25px" frameborder="0"></iframe>
     </div>
     <div class="ui-layout-west">
-        <iframe src="Classes.html" width="98%" height="98%"></iframe>
+        <iframe src="Classes/Classes.html" width="98%" height="98%"></iframe>
     </div>
     <div class="ui-layout-east">
         <table>
@@ -104,7 +105,9 @@ $(document).ready(function () {
             </tr>
             <tr>
                 <td>
-                    <textarea rows="20" cols="60" id="input"></textarea>
+                    <textarea rows="20" cols="60" id="input">s
+a b c
+1 2 3 4 5 6</textarea>
                 </td>
             <tr />
             <tr>
@@ -145,7 +148,14 @@ $(document).ready(function () {
             <button type="button" onclick="return Code.Clear();">Clear</button>
         </p>
 
-        <textarea rows="40" cols="40" id="code" name="code" width="100%"></textarea>
+        <textarea rows="40" cols="40" id="code" name="code" width="100%">
+var s = Input.ReadLine();
+var a = Input.Read();
+var b = Input.Read();
+var c = Input.ReadLine();
+var arr1 = Input.ReadArray();
+
+Output.Write(s, arr1, a, b, c, arr1);</textarea>
     </div>
 </body>
 
