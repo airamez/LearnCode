@@ -1,0 +1,176 @@
+<!doctype html>
+<head>
+    <title>WebIDE</title>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
+
+    <script src="Content/jquery-2.2.4.min.js"></script>
+    <script src="Content/jquery-ui/jquery-ui.js"></script>
+    <link href="Content/jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+    <link rel="stylesheet" src="Content/layout-default-latest.css">
+    <script type="text/javascript" src="Content/jquery.layout-latest.js"></script>
+    <script src="Content/WebIDE.js"></script>
+
+    <link rel="stylesheet" href="Content/CodeMirror/doc/docs.css">
+    <link rel="stylesheet" href="Content/CodeMirror/addon/show-hint.css">
+    <link rel="stylesheet" href="Content/CodeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/abcdef.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/eclipse.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/neat.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/railscasts.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/seti.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/tomorrow-night-bright.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/ttcn.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/twilight.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/vibrant-ink.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/xq-dark.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/xq-light.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/yeti.css">
+    <link rel="stylesheet" href="Content/CodeMirror/theme/zenburn.css">
+    <script src="Content/CodeMirror/lib/codemirror.js"></script>
+    <script src="Content/CodeMirror/mode/javascript.js"></script>
+    <script src="Content/CodeMirror/addon/active-line.js"></script>
+    <script src="Content/CodeMirror/addon/matchbrackets.js"></script>
+    <script src="Content/CodeMirror/addon/show-hint.js"></script>
+    <script src="Content/CodeMirror/addon/javascript-hint.js"></script>
+
+<script type="text/javascript">
+
+function selectTheme() {
+    var theme_select = document.getElementById("theme_select");
+    var theme = theme_select.options[theme_select.selectedIndex].textContent;
+    editor.setOption("theme", theme);
+    location.hash = "#" + theme;
+}
+
+var editor;
+
+$(document).ready(function () {
+
+	var myLayout = $('body').layout({ 
+        applyDefaultStyles: true,
+        east__minSize: 500,
+        west__minSize: 400
+    });
+
+    editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      lineNumbers: true,
+      styleActiveLine: true,
+      matchBrackets: true,
+      extraKeys: {"Ctrl-Space": "autocomplete"},
+      mode: {name: "javascript", globalVars: true}
+    });
+    editor.setSize("98%", "94%");
+    
+    var theme_select = document.getElementById("theme_select");
+    var choice = (location.hash && location.hash.slice(1)) ||
+                 (document.location.search &&
+                  decodeURIComponent(document.location.search.slice(1)));
+    if (choice) {
+      theme_select.value = choice;
+      editor.setOption("theme", choice);
+    }
+    
+    CodeMirror.on(window, "hashchange", function() {
+      var theme = location.hash.slice(1);
+      if (theme) { theme_select.value = theme; selectTheme(); }
+    });
+    
+});
+  
+</script>
+
+</head>
+
+<body>
+    <div class="ui-layout-north">
+        <iframe src="/Login.aspx" width="98%" height="25px" frameborder="0"></iframe>
+    </div>
+    <div class="ui-layout-west">
+        <iframe src="Classes/Classes.html" width="98%" height="98%"></iframe>
+    </div>
+    <div class="ui-layout-east">
+        <table>
+            <tr>
+                <td align="center">Input - <button type="button" onclick="return $('#input').empty();">Clear</button> </td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea rows="20" cols="60" id="input">
+s
+a b c
+1 2 3 4 5 6</textarea>
+                </td>
+            <tr />
+            <tr>
+                <td align="center">Output - <button type="button" onclick="return $('#output').empty();">Clear</button></td>
+            <tr />
+            <tr>
+                <td><textarea rows="20" cols="60" id="output"></textarea></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ui-layout-center" height="100%">
+        <p>
+            Theme:
+            <select onchange="selectTheme()" id="theme_select">
+                <option selected>default</option>
+                <option>abcdef</option>
+                <option>ambiance</option>
+                <option>blackboard</option>
+                <option>cobalt</option>
+                <option>eclipse</option>
+                <option>neat</option>
+                <option>night</option>
+                <option>railscasts</option>
+                <option>rubyblue</option>
+                <option>seti</option>
+                <option>the-matrix</option>
+                <option>tomorrow-night-bright</option>
+                <option>ttcn</option>
+                <option>twilight</option>
+                <option>vibrant-ink</option>
+                <option>xq-dark</option>
+                <option>xq-light</option>
+                <option>yeti</option>
+                <option>zenburn</option>
+            </select>
+            <button type="button" onclick="return Code.Run();">Run</button>
+            <button type="button" onclick="return Code.Clear();">Clear</button>
+        </p>
+
+        <textarea rows="40" cols="40" id="code" name="code" width="100%">
+var s = Input.ReadLine();
+var a = Input.Read();
+var b = Input.Read();
+var c = Input.ReadLine();
+var arr1 = Input.ReadArray();
+
+Output.Write(5);
+Output.WriteLine();
+
+Output.Write([1,2,3]);
+Output.WriteLine([1,2,3]);
+
+
+Output.WriteLine(s);
+Output.WriteLine(a + ' ' + b + ' ' + c);
+Output.Write(a + ' ');
+Output.Write(b + ' ');
+Output.WriteLine(c);
+Output.Write(arr1);
+Output.WriteLine();</textarea>
+    </div>
+</body>
+
+</html>
